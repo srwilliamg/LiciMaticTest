@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "LICIMATIC_DATABASE_TEST",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "LICIMATIC_DATABASE_TEST",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  },
+  "production": {
+    "username": "root",
+    "password": "root",
+    "database": "LICIMATIC_DATABASE_TEST",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  }
+}
