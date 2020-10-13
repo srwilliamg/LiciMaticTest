@@ -7,13 +7,18 @@ const RequestHandler = require("../utilities/RequestHandler");
 const servicesControllers = require("./controllers/servicesControllers");
 
 servicesRouter.post(
-  "/searchGrants",
-  RequestHandler(servicesControllers.getSearchGrants)
+  "/grants",
+  RequestHandler(servicesControllers.scrapGrants)
 );
 
 servicesRouter.patch(
-  "/searchGrants",
+  "/grants",
   RequestHandler(servicesControllers.patchGrant)
+);
+
+servicesRouter.get(
+  "/grants",
+  RequestHandler(servicesControllers.getGrants)
 );
 
 module.exports = servicesRouter;

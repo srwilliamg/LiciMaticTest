@@ -32,6 +32,18 @@ Scraper.getData = async () => {
             }
           };
 
+          const javaScriptToValidUrl = (content) => {
+            if (content.querySelector("a") !== null) {
+              const id = content
+                .querySelector("a")
+                .getAttribute("href")
+                .replace(/[^0-9]/g, "");
+              return `https://www.grants.gov/web/grants/view-opportunity.html?oppId=${id}`;
+            } else {
+              return null;
+            }
+          };
+
           return {
             number: notEmpty(content.cells[0].textContent),
             title: notEmpty(content.cells[1].textContent),
@@ -39,10 +51,7 @@ Scraper.getData = async () => {
             status: notEmpty(content.cells[3].textContent),
             postedDate: notEmpty(content.cells[4].textContent),
             closeDate: notEmpty(content.cells[5].textContent),
-            javascript:
-              content.cells[0].querySelector("a") !== null
-                ? content.cells[0].querySelector("a").getAttribute("href")
-                : null,
+            javascript: javaScriptToValidUrl(content.cells[0]),
           };
         });
       }
