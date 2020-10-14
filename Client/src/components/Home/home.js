@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./home.css";
-import Grants from "../Grants/grants";
+import Grants from "../grants/Grants";
 import { Container, Row, Col } from "reactstrap";
 
 class Home extends React.Component {

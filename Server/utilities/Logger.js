@@ -8,7 +8,7 @@ Logger.initLogger = () => {
   log4js.configure({
     appenders: { LiciMaticTestLogs: { type: "file", filename: "LiciMaticTestLogs.log" } },
     categories: {
-      default: { appenders: ["LiciMaticTestLogs"], level: "debug" },
+      default: { appenders: ["LiciMaticTestLogs"], level: "trace" },
     },
   });
 };

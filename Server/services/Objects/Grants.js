@@ -1,16 +1,18 @@
 "use strict";
 const Grant = require("../../models/index").grant;
-const Scraper = require("../Scrapers/Scraper");
+const Scraper = require("../scrapers/scraper");
 
 const Grants = module.exports;
 
-const MAIN_SECTION = "Grants";
+const OBJECT = "Grants";
+const scrapGrants = 'scrapGrants';
+const patchGrant = 'patchGrant';
+const getGrants = 'getGrants';
 
-Grants.scrapGrants = async (bodyData, options) => {
-  const section = `${MAIN_SECTION}.scrapGrants`;
-  const { logger = console } = options;
+Grants.scrapGrants = async (uuid, logger) => {
+  const logContent = `${uuid} - ${OBJECT}-${scrapGrants}`;
 
-  logger.info(section, "starts");
+  logger.trace(logContent, "start");
 
   const searchGrantsList = await Scraper.getData();
 
@@ -18,25 +20,23 @@ Grants.scrapGrants = async (bodyData, options) => {
 
   await Grant.bulkCreate(searchGrantsList);
 
-  logger.info(section, "end bulkCreate");
-
+  logger.trace(logContent, "end");
+  
   return Grant.findAll();
 };
 
-Grants.patchGrant = async (bodyData, options) => {
-  const section = `${MAIN_SECTION}.patchGrant`;
-  const { logger = console } = options;
+Grants.patchGrant = async (uuid, logger) => {
+  const logContent = `${uuid} - ${OBJECT}-${patchGrant}`;
 
-  logger.info(section, "starts");
-
+  logger.trace(logContent, "findAll");
+  
   return Grant.findAll();
 };
 
-Grants.getGrants = async (bodyData, options) => {
-  const section = `${MAIN_SECTION}.getGrants`;
-  const { logger = console } = options;
+Grants.getGrants = async (uuid, logger) => {
+  const logContent = `${uuid} - ${OBJECT}-${getGrants}`;
 
-  logger.info(section, "starts");
-
+  logger.trace(logContent, "findAll");
+  
   return Grant.findAll();
 };

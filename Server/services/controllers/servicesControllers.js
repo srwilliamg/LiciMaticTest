@@ -2,38 +2,47 @@
 
 const ServiceControllers = module.exports;
 
-const Grants = require('../Objects/Grants');
-const MAIN_SECTION = 'serviceControllers';
+const Grants = require('../objects/grants');
+const CONTROLLER = 'serviceControllers';
+const scrapGrants = 'scrapGrants';
+const patchGrant = 'patchGrant';
+const getGrants = 'getGrants';
 
 ServiceControllers.scrapGrants = async (req, res) => {
-  const section = `${MAIN_SECTION}.scrapGrants`;
-  const { body: bodyData, logger = console } = req;
+  const { logger, uuid } = req;
+  const controllerService = `${uuid} - ${CONTROLLER}-${scrapGrants}`;
 
-  logger.info(section, 'starts');
+  logger.trace(controllerService, 'start');
 
-  const response = await Grants.scrapGrants(bodyData, { logger });
+  const response = await Grants.scrapGrants(uuid, logger);
+
+  logger.trace(controllerService, 'end');
 
   res.send(response);
 };
 
 ServiceControllers.patchGrant = async (req, res) => {
-  const section = `${MAIN_SECTION}.patchGrant`;
-  const { body: bodyData, logger = console } = req;
+  const { logger, uuid } = req;
+  const controllerService = `${uuid} - ${CONTROLLER}-${patchGrant}`;
 
-  logger.info(section, 'starts');
+  logger.trace(controllerService, 'start');
 
-  const response = await Grants.patchGrant(bodyData, { logger });
+  const response = await Grants.patchGrant(uuid, logger);
   
+  logger.trace(controllerService, 'end');
+
   res.send(response);
 };
 
 ServiceControllers.getGrants = async (req, res) => {
-  const section = `${MAIN_SECTION}.getGrants`;
-  const { body: bodyData, logger = console } = req;
+  const { logger, uuid } = req;
+  const controllerService = `${uuid} - ${CONTROLLER}-${getGrants}`;
 
-  logger.info(section, 'starts');
+  logger.trace(controllerService, 'start');
 
-  const response = await Grants.getGrants(bodyData, { logger });
+  const response = await Grants.getGrants(uuid, logger);
+
+  logger.trace(controllerService, 'end');
   
   res.send(response);
 };

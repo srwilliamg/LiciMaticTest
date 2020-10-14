@@ -11,14 +11,16 @@ servicesRouter.post(
   RequestHandler(servicesControllers.scrapGrants)
 );
 
+servicesRouter.get(
+  "/grants",
+  RequestHandler(servicesControllers.getGrants)
+);
+
+// TODO
 servicesRouter.patch(
   "/grants",
   RequestHandler(servicesControllers.patchGrant)
 );
 
-servicesRouter.get(
-  "/grants",
-  RequestHandler(servicesControllers.getGrants)
-);
 
 module.exports = servicesRouter;

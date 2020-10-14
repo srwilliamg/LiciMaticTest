@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Home from "./components/Home/home";
-import Header from "./components/shared/header";
+import Home from "./components/home/Home";
+import Header from "./components/shared/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
