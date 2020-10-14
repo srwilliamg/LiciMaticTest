@@ -7,20 +7,21 @@
     "dialect": "mysql",
     "operatorsAliases": "false"
   },
-  "test": {
-    "username": "root",
-    "password": "root",
-    "database": "LICIMATIC_DATABASE_TEST",
-    "host": "localhost",
-    "dialect": "mysql",
-    "operatorsAliases": "false"
-  },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "LICIMATIC_DATABASE_TEST",
-    "host": "localhost",
-    "dialect": "mysql",
-    "operatorsAliases": "false"
+    "use_env_variable": "DATABASE_URL",
+    "host": "ec2-34-237-247-76.compute-1.amazonaws.com",
+    "database": "d874cdkpukbp7g",
+    "username": "jvogcxjudspmcf",
+    "port": "5432",
+    "password": "a8d0a44ff1e7026ac99c1e56708989c4ee74d010f149fb0c9ff8f763f4e45612",
+    "DATABASE_URL": "postgres://jvogcxjudspmcf:a8d0a44ff1e7026ac99c1e56708989c4ee74d010f149fb0c9ff8f763f4e45612@ec2-34-237-247-76.compute-1.amazonaws.com:5432/d874cdkpukbp7g",
+    "dialect": "postgres",
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

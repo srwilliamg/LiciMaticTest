@@ -3,7 +3,7 @@
 const express = require("express");
 const servicesRouter = express.Router();
 
-const RequestHandler = require("../utilities/RequestHandler");
+const RequestHandler = require("../utilities/requestHandler");
 const servicesControllers = require("./controllers/servicesControllers");
 
 servicesRouter.post(
