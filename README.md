@@ -10,3 +10,6 @@
   - Client: (in __Client/__ directory)
     - __npm__ install
     - __npm__ start
+
+
+Server url : https://licitestserver.herokuapp.com/
