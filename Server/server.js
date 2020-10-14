@@ -10,7 +10,7 @@ console.log(chalk.greenBright.bold("\nStarting LiciMaticTest server"));
 
 const ErrorsMiddleware = require('./middleware/errorsMiddleware');
 const LogMiddleware = require('./middleware/logMiddleware');
-const {initLogger } = require('./utilities/Logger');
+const {initLogger } = require('./utilities/logger');
 
 // routes file
 const routes = require('./routes');
