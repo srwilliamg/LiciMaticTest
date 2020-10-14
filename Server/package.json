@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "chalk": "^4.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "log4js": "^6.3.0",
     "mysql2": "^2.1.0",

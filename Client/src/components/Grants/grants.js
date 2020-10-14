@@ -14,6 +14,8 @@ import {
 } from "reactstrap";
 import dateFormat from "dateformat";
 
+const apiURL = process.env.REACT_APP_API_URL
+
 class Grants extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +37,7 @@ class Grants extends Component {
       loading: true,
     });
 
-    fetch("/api/services/grants", {
+    fetch(`${apiURL}/api/services/grants`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -63,7 +65,7 @@ class Grants extends Component {
         loading: true,
       });
 
-      fetch("/api/services/grants", {
+      fetch(`${apiURL}/api/services/grants`, {
         method: "POST",
         headers: {
           Accept: "application/json",

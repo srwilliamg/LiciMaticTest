@@ -3,6 +3,7 @@
 const express = require("express");
 const chalk = require("chalk");
 const log4js = require('log4js');
+const cors = require('cors');
 
 const port = process.env.PORT || 5000;
 
@@ -21,6 +22,25 @@ initLogger();
 
 app.use(express.json());
 app.use(LogMiddleware);
+app.use(cors());
+
+const whitelist = [process.env.REACT_APP_API_URL];
+const corsOptionsDelegate = (req, callback) => {
+  let corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = {
+      origin: true
+    };
+  } else {
+    corsOptions = {
+      origin: false
+    };
+  }
+
+  return callback(null, corsOptions);
+};
+
+cors(corsOptionsDelegate);
 
 app.use(`/api`, routes);
 
