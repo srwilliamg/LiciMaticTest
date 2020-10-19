@@ -1,6 +1,6 @@
 "use strict";
 const Grant = require("../../models/index").grant;
-const Scraper = require("../scrapers/scraper");
+const Scraper = require("../Scrapers/Scraper");
 
 const Grants = module.exports;
 

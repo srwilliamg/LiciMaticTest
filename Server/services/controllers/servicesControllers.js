@@ -2,7 +2,7 @@
 
 const ServiceControllers = module.exports;
 
-const Grants = require('../objects/grants');
+const Grants = require('../Objects/Grants');
 const CONTROLLER = 'serviceControllers';
 const scrapGrants = 'scrapGrants';
 const patchGrant = 'patchGrant';
