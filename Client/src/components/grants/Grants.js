@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import dateFormat from "dateformat";
 
-const apiURL = process.env.REACT_APP_API_URL
+const apiURL = process.env.REACT_APP_API_URL;
 
 class Grants extends Component {
   constructor(props) {
@@ -46,19 +46,17 @@ class Grants extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        setTimeout(() => {
-          this.setState({
-            grants: data,
-            loading: false,
-          });
-        }, 1000);
+        this.setState({
+          grants: data,
+          loading: false,
+        });
       })
       .catch((err) => {
         console.error("Couldn't get grants from server", err);
       });
   };
 
-  getUpdatedScrapedData() {
+  getUpdatedScrapedData = () => {
     if (!this.state.loading) {
       // Waiting for the data
       this.setState({
@@ -74,12 +72,10 @@ class Grants extends Component {
       })
         .then((res) => res.json())
         .then((data) => {
-          setTimeout(() => {
-            this.setState({
-              grants: data,
-              loading: false,
-            });
-          }, 1000);
+          this.setState({
+            grants: data,
+            loading: false,
+          });
         })
         .catch((err) => {
           console.error("Couldn't get grants from server", err);
@@ -90,6 +86,19 @@ class Grants extends Component {
   }
 
   renderGrants = () => {
+    const grants = JSON.parse(JSON.stringify(this.state.grants));
+
+    const grantToRow = (grant) => {
+      grant.number = (
+        <a key={grant.idGrant} style={{ color: "blue" }} href={grant.javascript}>
+          {grant.number}
+        </a>
+      );
+      grant.postedDate = dateFormat(grant.postedDate, "mm/dd/yyyy");
+      grant.closeDate = dateFormat(grant.closeDate, "mm/dd/yyyy");
+      return grant;
+    };
+
     const data = {
       columns: [
         {
@@ -124,16 +133,7 @@ class Grants extends Component {
           width: 100,
         },
       ],
-      rows: this.state.grants.map((grant) => {
-        grant.number = (
-          <a style={{ color: "blue" }} href={grant.javascript}>
-            {grant.number}
-          </a>
-        );
-        grant.postedDate = dateFormat(grant.postedDate, "mm/dd/yyyy");
-        grant.closeDate = dateFormat(grant.closeDate, "mm/dd/yyyy");
-        return grant;
-      }),
+      rows: grants.map(grantToRow),
     };
 
     return (
@@ -160,19 +160,17 @@ class Grants extends Component {
               <Button
                 className="float-right"
                 color="primary"
-                onClick={this.getUpdatedScrapedData}
-              >
+                onClick={this.getUpdatedScrapedData}>
                 Update scraped grant data
               </Button>
             </Col>
           </Row>
         </CardHeader>
         <CardBody style={{ placeSelf: "center" }}>
-          {this.state.loading ? (
-            <Spinner color="primary" />
-          ) : (
-            this.renderGrants()
-          )}
+          {this.state.loading ?
+            (<Spinner color="primary" />) :
+            (this.renderGrants())
+          }
         </CardBody>
       </Card>
     );
